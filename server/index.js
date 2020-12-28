@@ -23,9 +23,6 @@ try{
     //routes
     app.use('/auth', require(path.join(__dirname, 'routes/auth')));
     app.use('/users', passport.authenticate('jwt', {session: false}), require(path.join(__dirname, 'routes/user')));
-    app.get('/', passport.authenticate('jwt', {session: false}), function(req, res) {
-        return res.send('Hello');
-    });
 
     console.log(`Environment: ${process.env.NODE_ENV}`);
     const PORT = process.env.PORT || 8080;
