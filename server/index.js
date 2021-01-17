@@ -7,8 +7,15 @@ try{
 
     const helmet = require('helmet');
 
+    const cors = require('cors');
+
     const express = require('express');
     const app = express();
+
+    app.use(cors({
+        origin: 'http://localhost:3000',
+        optionsSuccessStatus: 200,
+    }));
 
     app.use(passport.initialize());
     app.use(helmet());
@@ -20,9 +27,12 @@ try{
     app.use(express.json());
     app.use(express.static(path.join(__dirname, 'public')));
 
+    const checkRole = require(path.join(__dirname, 'middlewares/checkRole'));
     //routes
-    app.use('/auth', require(path.join(__dirname, 'routes/auth')));
-    app.use('/users', passport.authenticate('jwt', {session: false}), require(path.join(__dirname, 'routes/user')));
+    app.use('/api/auth', require(path.join(__dirname, 'routes/auth')));
+    app.use('/api/users', passport.authenticate('jwt', {session: false}) , checkRole.isAdmin, require(path.join(__dirname, 'routes/user')));
+    app.use('/api/chuyen-bay', require(path.join(__dirname, 'routes/chuyenBay')));
+    app.use('/api/san-bay', require(path.join(__dirname, 'routes/sanBay')));
 
     console.log(`Environment: ${process.env.NODE_ENV}`);
     const PORT = process.env.PORT || 8080;

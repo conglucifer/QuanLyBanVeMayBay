@@ -15,7 +15,7 @@ router.get("/:id", users.findOne);
 router.put("/:id", users.update);
 
 // Delete a User with id
-router.delete("/:id", users.delete);
+// router.delete("/:id", users.delete);
 
 // Delete all Users
 router.delete("/", users.deleteAll);

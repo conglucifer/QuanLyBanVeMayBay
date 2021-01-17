@@ -1,6 +1,6 @@
 const path = require('path');
 const db = require(path.join(__dirname, '../models'));
-const User = db.user;
+const { User, Role } = db;
 const Op = db.Sequelize.Op;
 
 //Create and save new User
@@ -36,7 +36,7 @@ exports.findAll = (req, res) => {
     const email = req.query.email;
     var condition = email ? { email: { [Op.like]: `%${email}%` } } : null;
 
-    User.findAll({ where: condition })
+    User.findAll({ where: condition , include: {model: Role, as: 'roles'}})
     .then(data => {
         res.send(data);
     })
@@ -89,29 +89,29 @@ exports.update = (req, res) => {
 };
 
 // Delete a User with the specified id in the request
-exports.delete = (req, res) => {
-    const id = req.params.id;
+// const delete = (req, res) => {
+//     const id = req.params.id;
 
-    User.destroy({
-      where: { id: id }
-    })
-    .then(num => {
-        if (num == 1) {
-            res.send({
-                message: "User was deleted successfully!"
-            });
-        } else {
-            res.send({
-                message: `Cannot delete User with id=${id}. Maybe User was not found!`
-            });
-        }
-    })
-    .catch(err => {
-        res.status(500).send({
-            message: "Could not delete User with id=" + id
-        });
-    });
-};
+//     User.destroy({
+//       where: { id: id }
+//     })
+//     .then(num => {
+//         if (num == 1) {
+//             res.send({
+//                 message: "User was deleted successfully!"
+//             });
+//         } else {
+//             res.send({
+//                 message: `Cannot delete User with id=${id}. Maybe User was not found!`
+//             });
+//         }
+//     })
+//     .catch(err => {
+//         res.status(500).send({
+//             message: "Could not delete User with id=" + id
+//         });
+//     });
+// };
 
 // Delete all Users from the database.
 exports.deleteAll = (req, res) => {
