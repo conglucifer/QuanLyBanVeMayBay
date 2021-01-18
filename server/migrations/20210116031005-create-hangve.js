@@ -12,6 +12,7 @@ module.exports = {
       MaHangVe: { 
         allowNull: false,
         type: Sequelize.INTEGER,
+        autoIncrement: true,
         primaryKey: true,
       },
       TenHangVe: {

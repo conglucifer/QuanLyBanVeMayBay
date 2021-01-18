@@ -4,8 +4,8 @@ const { SanBay } = db;
 const Op = db.Sequelize.Op;
 
 exports.laySanBay = (req, res) => {
-    const maSanBay = req.params.maSanBay;
-    SanBay.findAll({ where: { MaSanBay: maSanBay } })
+    const MaSanBay = req.params.MaSanBay;
+    SanBay.findByPk(MaSanBay)
     .then(sanBay => {
         res.send(sanBay);
     })

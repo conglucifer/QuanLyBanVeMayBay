@@ -10,8 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     });
     ChuyenBay.associate = function(models){
         ChuyenBay.belongsTo(models.TuyenBay, { foreignKey: 'MaTuyenBay' });
-        ChuyenBay.hasMany(models.ChiTietChuyenBay);
-        ChuyenBay.hasMany(models.VeChuyenBay);
+        ChuyenBay.hasMany(models.ChiTietChuyenBay, {as: 'ChiTietChuyenBay', foreignKey: 'MaChuyenBay'});
+        ChuyenBay.hasMany(models.VeChuyenBay, {as: 'VeChuyenBay', foreignKey: 'MaChuyenBay'});
+        ChuyenBay.hasMany(models.TinhTrangVe, {as: 'TinhTrangVe', foreignKey: 'MaChuyenBay'});
     }
     return ChuyenBay;
 }

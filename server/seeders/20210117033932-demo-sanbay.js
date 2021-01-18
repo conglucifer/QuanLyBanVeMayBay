@@ -12,7 +12,7 @@ module.exports = {
      * }], {});
     */
 
-    await queryInterface.bulkInsert('SanBay', [
+    await queryInterface.bulkInsert('SANBAY', [
       {MaSanBay: 'HAN', TenSanBay: 'Nội Bài'},
       {MaSanBay: 'SGN', TenSanBay: 'Tân Sơn Nhất'},
       {MaSanBay: 'VCS', TenSanBay: 'Côn Đảo'},
@@ -33,5 +33,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
+    await queryInterface.bulkDelete('SANBAY', null, {});
   }
 };

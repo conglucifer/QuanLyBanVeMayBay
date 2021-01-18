@@ -4,6 +4,6 @@ const router = require("express").Router();
 
 router.post('/', sanBayController.nhanSanBay);
 router.get('/', sanBayController.layTatCaSanBay);
-router.get('/:maSanBay', sanBayController.laySanBay);
+router.get('/:MaSanBay', sanBayController.laySanBay);
 
 module.exports = router;

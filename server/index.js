@@ -33,6 +33,7 @@ try{
     app.use('/api/users', passport.authenticate('jwt', {session: false}) , checkRole.isAdmin, require(path.join(__dirname, 'routes/user')));
     app.use('/api/chuyen-bay', require(path.join(__dirname, 'routes/chuyenBay')));
     app.use('/api/san-bay', require(path.join(__dirname, 'routes/sanBay')));
+    app.use('/api/ve-chuyen-bay', require(path.join(__dirname, 'routes/veChuyenBay')));
 
     console.log(`Environment: ${process.env.NODE_ENV}`);
     const PORT = process.env.PORT || 8080;
