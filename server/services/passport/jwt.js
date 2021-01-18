@@ -5,6 +5,7 @@ const opts = {}
 // Client must use request header as below to send JWT token for backend to verify:
 // Authorization: bearer <jwt-token-here>
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+
 // Use the same secret used to sign the jwt token in login api
 opts.secretOrKey = process.env.JWT_SECRET || 'quanlybanvechuyenbay123abc';
 module.exports = new JwtStrategy(opts, function (jwt_payload, done) {

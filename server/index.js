@@ -11,7 +11,10 @@ try{
 
     const express = require('express');
     const app = express();
-
+    
+    const maxListenersExceededWarning = require('max-listeners-exceeded-warning')
+    maxListenersExceededWarning()
+    
     app.use(cors({
         origin: 'http://localhost:3000',
         optionsSuccessStatus: 200,
