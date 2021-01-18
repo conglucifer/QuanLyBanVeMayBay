@@ -23,6 +23,7 @@ path: config/config.json
 ```
 ## API
 ### /api/auth
+``` bash
 //post request to: /api/auth/login
 {
     "email": "admin@mail.com",
@@ -38,10 +39,12 @@ Axios.get(
   'http://localhost:8000/api/san-bay',
   { headers: { Authorization: 'Bearer (token here...)' } }
 )
+```
 ### /users
 ### /san-bay
 ### /chuyen-bay
 #### nhan lich chuyen bay
+``` bash
 //post request to: /chuyen-bay
 {
     "MaChuyenBay": "CB02",
@@ -99,4 +102,5 @@ Axios.get(
         }
     ]
 }
+```
 ### /ve-chuyen-bay
