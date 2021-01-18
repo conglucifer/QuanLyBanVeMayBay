@@ -6,10 +6,6 @@ const passport = require(path.join(__dirname, '../../services/passport'));
 
 const router = express.Router();
 
-router.get('/login', function(req, res){
-  res.send('ahihi');
-});
-
 router.post('/login', passport.authenticate('local', { session: false }), (req, res, next) => {
   // Passport store user info in req.user
   const user = req.user;

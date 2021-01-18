@@ -6,7 +6,7 @@ const opts = {}
 // Authorization: bearer <jwt-token-here>
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 // Use the same secret used to sign the jwt token in login api
-opts.secretOrKey = process.env.JWT_SECRET;
+opts.secretOrKey = process.env.JWT_SECRET || 'quanlybanvechuyenbay123abc';
 module.exports = new JwtStrategy(opts, function (jwt_payload, done) {
   // passport-jwt already verified the signature. We can now use the jwt_payload.
   // We can do database request to get more information. But this may slow down our overall system.

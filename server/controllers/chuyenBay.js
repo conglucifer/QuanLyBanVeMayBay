@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 
 exports.layChiTietChuyenBay = (req, res) => {
     const MaChuyenBay = req.params.MaChuyenBay;
-    ChiTietChuyenBay.findAll({ where: { MaChuyenBay }, include: {model: SanBay, as: 'SanBayTrungGian'} })
+    ChiTietChuyenBay.findAll({ where: { MaChuyenBay }, include: {model: SanBay}})
     .then(chiTietChuyenBay => {
         res.send(chiTietChuyenBay);
     })
